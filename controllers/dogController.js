@@ -2,7 +2,6 @@ const Dog = require("../models/Dog");
 const cloudinary = require("../config/cloudinary");
 const fs = require("fs");
 
-// ADD DOG
 const addDog = async (req, res) => {
   try {
     if (!req.file) {
@@ -18,7 +17,6 @@ const addDog = async (req, res) => {
       }
     );
 
-    // delete local file after upload
     fs.unlinkSync(req.file.path);
 
     const dog = await Dog.create({
@@ -41,7 +39,6 @@ const addDog = async (req, res) => {
   }
 };
 
-// GET ALL DOGS
 const getDogs = async (req, res) => {
   try {
     const dogs = await Dog.find();
@@ -57,7 +54,6 @@ const getDogs = async (req, res) => {
   }
 };
 
-// GET DOG BY ID
 const getDogById = async (req, res) => {
   try {
     const dog = await Dog.findById(req.params.id);
@@ -76,7 +72,6 @@ const getDogById = async (req, res) => {
   }
 };
 
-// UPDATE DOG
 const updateDog = async (req, res) => {
   try {
     const dog = await Dog.findByIdAndUpdate(
@@ -105,7 +100,6 @@ const updateDog = async (req, res) => {
   }
 };
 
-// DELETE DOG
 const deleteDog = async (req, res) => {
   try {
     const dog = await Dog.findByIdAndDelete(
